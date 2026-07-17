@@ -15,7 +15,7 @@ export function Hero() {
             "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2400&q=80')",
         }}
         role="img"
-        aria-label="חדר כושר"
+        aria-label="אימון כוח"
       />
       <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(10,10,10,0.88)_8%,rgba(10,10,10,0.55)_48%,rgba(10,10,10,0.35)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,77,0,0.28),transparent_45%)]" />
@@ -458,7 +458,7 @@ export function Footer() {
           {PHONE_DISPLAY}
         </a>
         <p className="text-sm text-muted">
-          © {new Date().getFullYear()} Moti Gym
+          © {new Date().getFullYear()} MOTI · מאמן אישי
         </p>
       </div>
     </footer>

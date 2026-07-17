@@ -1,16 +1,12 @@
-# Moti Gym Landing
+# MOTI — מאמן כושר אישי
 
-דף נחיתה שיווקי ל-MOTI — אימון אישי.
+דף נחיתה שיווקי למוטי — מאמן אישי.
 
-## אחסון (Vercel)
+## אתר חי
 
-מומלץ לייבא את הריפו ל־[Vercel](https://vercel.com/new/import?s=https://github.com/hodaelco-tr/motiGym):
+https://moti-coach.vercel.app
 
-1. התחבר עם GitHub (`hodaelco-tr`)
-2. Import את `motiGym`
-3. Deploy
-
-תקבל כתובת בסגנון `https://motigym.vercel.app` — וכל push ל־`main` יעדכן אותה אוטומטית.
+כל push ל־`main` מעדכן את האתר אוטומטית (Vercel).
 
 ## הרצה מקומית
 
