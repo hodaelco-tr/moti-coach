@@ -1,3 +1,4 @@
+import { WhatsAppButton } from './components/WhatsAppButton'
 import {
   Faq,
   FinalCta,
@@ -22,6 +23,7 @@ export default function App() {
       <Faq />
       <FinalCta />
       <Footer />
+      <WhatsAppButton variant="fab" />
     </div>
   )
 }
