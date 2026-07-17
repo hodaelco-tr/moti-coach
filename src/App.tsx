@@ -1,4 +1,3 @@
-import { StickyCta } from './components/StickyCta'
 import { WhatsAppButton } from './components/WhatsAppButton'
 import {
   Faq,
@@ -14,7 +13,7 @@ import {
 
 export default function App() {
   return (
-    <div id="top" className="pb-20 md:pb-0">
+    <div id="top">
       <Hero />
       <ProofBar />
       <Method />
@@ -24,7 +23,6 @@ export default function App() {
       <Faq />
       <FinalCta />
       <Footer />
-      <StickyCta />
       <WhatsAppButton variant="fab" />
     </div>
   )
