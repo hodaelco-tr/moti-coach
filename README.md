@@ -2,11 +2,15 @@
 
 דף נחיתה שיווקי ל-MOTI — אימון אישי.
 
-## אתר חי
+## אחסון (Vercel)
 
-https://hodaelco-tr.github.io/motiGym/
+מומלץ לייבא את הריפו ל־[Vercel](https://vercel.com/new/import?s=https://github.com/hodaelco-tr/motiGym):
 
-כל push ל־`main` מעדכן את האתר אוטומטית (GitHub Pages).
+1. התחבר עם GitHub (`hodaelco-tr`)
+2. Import את `motiGym`
+3. Deploy
+
+תקבל כתובת בסגנון `https://motigym.vercel.app` — וכל push ל־`main` יעדכן אותה אוטומטית.
 
 ## הרצה מקומית
 
