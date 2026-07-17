@@ -68,16 +68,10 @@ export function Hero() {
           אימון אישי עם מוטי. תוכנית מדויקת, ליווי צמוד, תוצאות שנשארות.
         </p>
 
-        <div
-          className="animate-rise mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
-          style={{ animationDelay: '0.45s' }}
-        >
+        <div className="animate-rise mt-8" style={{ animationDelay: '0.45s' }}>
           <CtaButton href="#contact" className="min-w-[220px]">
             קבע אימון היכרות חינם
           </CtaButton>
-          <WhatsAppButton variant="ghost" className="min-w-[180px]">
-            דבר איתי ב-WhatsApp
-          </WhatsAppButton>
         </div>
 
         <p
