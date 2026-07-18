@@ -128,3 +128,133 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Simple accessibility menu (local demo) */
+html {
+  font-size: calc(100% * var(--a11y-font-scale, 1));
+}
+
+.a11y-skip {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -100px;
+  z-index: 100;
+  background: #121212;
+  color: #fff;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.a11y-skip:focus {
+  top: 1rem;
+}
+
+.a11y-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: 1.5rem;
+  z-index: 70;
+  display: inline-flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  background: #121212;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.a11y-panel {
+  position: fixed;
+  right: 1rem;
+  bottom: 5.5rem;
+  z-index: 70;
+  width: min(18rem, calc(100vw - 2rem));
+  max-height: min(70vh, 28rem);
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid #d8d8d4;
+  background: #fff;
+  color: #121212;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+.a11y-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.a11y-close,
+.a11y-reset,
+.a11y-font-btns button {
+  border: 1px solid #d8d8d4;
+  background: #f3f4f6;
+  padding: 0.35rem 0.65rem;
+  font-weight: 700;
+}
+
+.a11y-font-btns {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.a11y-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.a11y-item input {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: #ff4d00;
+}
+
+.a11y-reset {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+html.a11y-contrast {
+  filter: contrast(1.3);
+}
+
+html.a11y-grayscale {
+  filter: grayscale(1);
+}
+
+html.a11y-contrast.a11y-grayscale {
+  filter: grayscale(1) contrast(1.3);
+}
+
+html.a11y-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 0.18em;
+}
+
+html.a11y-readable,
+html.a11y-readable body,
+html.a11y-readable .font-display,
+html.a11y-readable .font-brand {
+  font-family: Arial, Helvetica, sans-serif !important;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+}
+
+html.a11y-motion *,
+html.a11y-motion *::before,
+html.a11y-motion *::after {
+  animation: none !important;
+  transition: none !important;
+}
