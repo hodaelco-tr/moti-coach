@@ -109,19 +109,30 @@ export function ProofBar() {
   return (
     <section
       ref={ref}
-      className="reveal border-y border-line bg-white"
+      className="reveal relative overflow-hidden bg-ink text-white"
       aria-label="אמינות"
     >
-      <div className="mx-auto grid max-w-6xl grid-cols-3 gap-6 px-4 py-8 sm:px-6 lg:px-10">
-        {items.map((item) => (
-          <div key={item.label} className="text-center md:text-start">
-            <p className="font-brand text-3xl font-extrabold tracking-wide text-ink sm:text-5xl">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,77,0,0.18),transparent_55%)]"
+        aria-hidden="true"
+      />
+      <ul className="relative mx-auto grid max-w-6xl list-none grid-cols-1 divide-y divide-white/15 p-0 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:divide-white/15">
+        {items.map((item, i) => (
+          <li
+            key={item.label}
+            className="flex flex-col items-center px-4 py-10 text-center sm:px-8 sm:py-12"
+            style={{ transitionDelay: `${i * 80}ms` }}
+          >
+            <span className="mb-4 h-1 w-10 bg-blaze" aria-hidden="true" />
+            <p className="font-brand text-4xl font-extrabold tracking-[0.06em] sm:text-5xl lg:text-6xl">
               {item.value}
             </p>
-            <p className="mt-1 text-sm font-medium text-muted">{item.label}</p>
-          </div>
+            <p className="mt-3 text-sm font-semibold tracking-wide text-white/85">
+              {item.label}
+            </p>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   )
 }

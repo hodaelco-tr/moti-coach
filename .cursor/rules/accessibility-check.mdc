@@ -1,0 +1,21 @@
+---
+description: After every UI/code change, verify accessibility before finishing
+alwaysApply: true
+---
+
+# Accessibility check on every change
+
+Whenever you change UI, copy, styles, or interaction behavior in this project, run a quick accessibility pass **before** considering the task done. Do not wait for the user to ask.
+
+## Required checklist (per change)
+
+1. **Contrast** — Text on dark/light backgrounds meets ~WCAG AA (≥4.5:1 normal, ≥3:1 large). Prefer `text-white/85+` on ink; avoid `white/55–70` for body/labels. Keep `--color-muted` dark enough on paper.
+2. **Semantics** — Use real headings, lists, `nav`/`main`/`section` with labels when needed. Decorative images/gradients/icons get `aria-hidden`. Meaningful controls have accessible names (`aria-label` / visible text).
+3. **Keyboard** — Interactive elements are focusable; visible `:focus-visible` outline (blaze). Hit targets ≥44×44px where practical. Dialogs: Escape, focus return, focus trap when open.
+4. **Motion** — Respect `prefers-reduced-motion` / existing `a11y-reduce-motion`. Do not hide content with opacity-only reveal without the `js-a11y` / reduced-motion safe pattern already in `useReveal` + `.reveal`.
+5. **Statement honesty** — Do not claim full ת״י 5568 / WCAG AA certification. Do not add lines that invite disputes (e.g. “professional audit not done”) unless the user explicitly asks.
+6. **RTL / Hebrew** — Keep logical layout, `dir="ltr"` only on phone numbers; don’t force Latin `uppercase` on Hebrew labels.
+
+## After visual polish
+
+If a change is mainly aesthetic, still re-check contrast, focus, and semantics for the touched region. Fix any regression in the same turn.
