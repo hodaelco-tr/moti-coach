@@ -3,7 +3,7 @@ export const PHONE_DISPLAY = '054-918-9411'
 
 /** Prefills the WhatsApp compose box when the chat opens. */
 export const WHATSAPP_PREFILL =
-  'היי מרדכי, הגעתי מהאתר ואשמח לשמוע על אימון אישי'
+  'היי מרדכי, הגעתי מהאתר ואשמח לשמוע על אימון אישי במחירי היכרות'
 
 /** https://wa.me/972…?text=… */
 export function getWhatsAppUrl() {
