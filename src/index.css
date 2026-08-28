@@ -137,6 +137,69 @@
   transform: translateY(0);
 }
 
+/* Storytelling rhythm — shared grammar between sections (ui-ux-pro-max) */
+.section-shell {
+  padding-inline: 1rem;
+  padding-block: 4rem;
+}
+
+@media (min-width: 640px) {
+  .section-shell {
+    padding-inline: 1.5rem;
+    padding-block: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-shell {
+    padding-inline: 2.5rem;
+  }
+}
+
+.section-eyebrow {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-blaze);
+}
+
+.section-rule {
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin-top: 0.85rem;
+  background: var(--color-blaze);
+}
+
+.chapter-ink {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.chapter-paper {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.chapter-divider {
+  height: 1px;
+  margin-inline: max(1rem, calc((100% - 72rem) / 2 + 1rem));
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.chapter-divider-light {
+  height: 1px;
+  margin-inline: max(1rem, calc((100% - 72rem) / 2 + 1rem));
+  background: var(--color-line);
+}
+
+/* Crisp chapter seam — hard cut + brand accent (no muddy gradients) */
+.chapter-seam {
+  height: 3px;
+  background: var(--color-blaze);
+}
+
 /* Simple accessibility menu (local demo) */
 html {
   font-size: calc(100% * var(--a11y-font-scale, 1));

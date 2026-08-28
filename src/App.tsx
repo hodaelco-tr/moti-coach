@@ -51,12 +51,34 @@ export default function App() {
       <AccessibilityMenu />
       <main id="main-content">
         <Hero />
-        <ProofBar />
-        <Method />
-        <Results />
-        <Testimonials />
-        <Plans />
-        <Faq />
+
+        <div className="chapter-ink">
+          <ProofBar />
+          <div className="chapter-divider" aria-hidden="true" />
+          <Method />
+          <div className="chapter-divider" aria-hidden="true" />
+          <Results />
+        </div>
+
+        <div className="chapter-seam" aria-hidden="true" />
+
+        <div className="chapter-paper">
+          <Testimonials />
+        </div>
+
+        <div className="chapter-seam" aria-hidden="true" />
+
+        <div className="chapter-ink">
+          <Plans />
+        </div>
+
+        <div className="chapter-seam" aria-hidden="true" />
+
+        <div className="chapter-paper">
+          <Faq />
+        </div>
+
+        <div className="chapter-seam" aria-hidden="true" />
         <FinalCta />
       </main>
       <Footer />

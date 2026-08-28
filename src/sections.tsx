@@ -1,9 +1,19 @@
+import type { ReactNode } from 'react'
 import { CtaButton } from './components/CtaButton'
 import { WhatsAppButton } from './components/WhatsAppButton'
 import { useReveal } from './hooks/useReveal'
 import { PHONE_DISPLAY, PHONE_E164 } from './lib/whatsapp'
 
 const TEL = `tel:+${PHONE_E164}`
+
+function Eyebrow({ children, align = 'start' }: { children: ReactNode; align?: 'start' | 'center' }) {
+  return (
+    <div className={align === 'center' ? 'flex flex-col items-center' : undefined}>
+      <p className="section-eyebrow">{children}</p>
+      <span className="section-rule" aria-hidden="true" />
+    </div>
+  )
+}
 
 export function Hero() {
   return (
@@ -16,8 +26,15 @@ export function Hero() {
         }}
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(10,10,10,0.88)_8%,rgba(10,10,10,0.55)_48%,rgba(10,10,10,0.35)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,77,0,0.28),transparent_45%)]" />
+      <div
+        className="absolute inset-0 bg-[linear-gradient(105deg,rgba(10,10,10,0.88)_8%,rgba(10,10,10,0.55)_48%,rgba(10,10,10,0.35)_100%)]"
+        aria-hidden="true"
+      />
+      {/* Brand energy tied to the hero image — not a floating blob */}
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,77,0,0.22),transparent_42%)]"
+        aria-hidden="true"
+      />
 
       <nav
         className="relative z-10 flex items-center justify-between px-4 py-5 sm:px-6 lg:px-10"
@@ -64,7 +81,7 @@ export function Hero() {
           MOTI
         </p>
 
-        <div className="mt-4 h-1 w-28 origin-right bg-blaze animate-pulse-line sm:w-40" />
+        <div className="mt-4 h-1 w-28 origin-right bg-blaze animate-pulse-line sm:w-40" aria-hidden="true" />
 
         <h1
           className="animate-rise mt-6 max-w-3xl font-display text-[clamp(1.85rem,5.2vw,3.6rem)] leading-[1.12] font-extrabold text-balance"
@@ -109,18 +126,14 @@ export function ProofBar() {
   return (
     <section
       ref={ref}
-      className="reveal relative overflow-hidden bg-ink text-white"
+      className="reveal section-shell"
       aria-label="אמינות"
     >
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,77,0,0.18),transparent_55%)]"
-        aria-hidden="true"
-      />
-      <ul className="relative mx-auto grid max-w-6xl list-none grid-cols-1 divide-y divide-white/15 p-0 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:divide-white/15">
+      <ul className="mx-auto grid max-w-6xl list-none grid-cols-1 divide-y divide-white/15 p-0 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:divide-white/15">
         {items.map((item, i) => (
           <li
             key={item.label}
-            className="flex flex-col items-center px-4 py-10 text-center sm:px-8 sm:py-12"
+            className="flex flex-col items-center px-2 py-6 text-center sm:px-8 sm:py-4"
             style={{ transitionDelay: `${i * 80}ms` }}
           >
             <span className="mb-4 h-1 w-10 bg-blaze" aria-hidden="true" />
@@ -141,16 +154,10 @@ export function Method() {
   const ref = useReveal<HTMLElement>()
 
   return (
-    <section
-      id="method"
-      ref={ref}
-      className="reveal bg-ink px-4 py-16 text-white sm:px-6 sm:py-24 lg:px-10"
-    >
+    <section id="method" ref={ref} className="reveal section-shell">
       <div className="mx-auto max-w-6xl">
-        <p className="text-sm font-bold tracking-[0.18em] text-blaze uppercase">
-          מכיר את זה?
-        </p>
-        <h2 className="mt-3 max-w-3xl font-display text-3xl font-extrabold text-balance sm:text-5xl">
+        <Eyebrow>מכיר את זה?</Eyebrow>
+        <h2 className="mt-5 max-w-3xl font-display text-3xl font-extrabold text-balance sm:text-5xl">
           מתנשף במדרגות? קשה להרים קניות?
         </h2>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
@@ -181,32 +188,29 @@ export function Results() {
   ]
 
   return (
-    <section
-      id="results"
-      ref={ref}
-      className="reveal bg-paper-deep px-4 py-16 sm:px-6 sm:py-24 lg:px-10"
-    >
-      <div className="mx-auto max-w-6xl">
-        <p className="text-sm font-bold tracking-[0.18em] text-blaze uppercase">
-          מה מרוויחים
-        </p>
-        <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold text-balance sm:text-5xl">
+    <section id="results" ref={ref} className="reveal section-shell">
+      <div className="mx-auto max-w-6xl text-center">
+        <Eyebrow align="center">מה מרוויחים</Eyebrow>
+        <h2 className="mx-auto mt-5 max-w-3xl font-display text-4xl font-extrabold text-balance sm:text-6xl">
           יתרונות שמרגישים ביום־יום
         </h2>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+        <p className="mx-auto mt-6 max-w-xl text-lg text-white/85">
           לא רק «להתאמן» — לחזור לאנרגיה, לתנועה ולאיכות חיים.
         </p>
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map((b) => (
-            <li
-              key={b}
-              className="border border-line bg-white px-5 py-4 font-display text-lg font-bold text-ink"
-            >
-              {b}
-            </li>
-          ))}
-        </ul>
       </div>
+      <ul className="mx-auto mt-14 grid max-w-5xl list-none grid-cols-1 gap-x-12 gap-y-10 p-0 sm:grid-cols-2">
+        {benefits.map((b, i) => (
+          <li key={b} className="text-center sm:text-start">
+            <span
+              className="font-brand text-5xl font-extrabold leading-none text-white/15 sm:text-7xl"
+              aria-hidden="true"
+            >
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <p className="-mt-4 font-display text-2xl font-bold sm:-mt-6 sm:text-3xl">{b}</p>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
@@ -229,16 +233,10 @@ export function Testimonials() {
   ]
 
   return (
-    <section
-      id="about"
-      ref={ref}
-      className="reveal bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-10"
-    >
+    <section id="about" ref={ref} className="reveal section-shell">
       <div className="mx-auto max-w-6xl">
-        <p className="text-sm font-bold tracking-[0.18em] text-blaze uppercase">
-          עליי
-        </p>
-        <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold sm:text-5xl">
+        <Eyebrow>עליי</Eyebrow>
+        <h2 className="mt-5 max-w-2xl font-display text-3xl font-extrabold sm:text-5xl">
           היי, שמי מרדכי
         </h2>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
@@ -251,7 +249,7 @@ export function Testimonials() {
         </p>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
-          <div className="border border-line bg-paper p-6">
+          <div className="border border-line bg-white p-6">
             <h3 className="font-display text-xl font-bold">השתלמויות</h3>
             <ul className="mt-4 space-y-2 text-muted">
               {specialties.map((s) => (
@@ -262,7 +260,7 @@ export function Testimonials() {
               ))}
             </ul>
           </div>
-          <div className="border border-line bg-paper p-6">
+          <div className="border border-line bg-white p-6">
             <h3 className="font-display text-xl font-bold">ניסיון</h3>
             <ul className="mt-4 space-y-2 text-muted">
               {experience.map((s) => (
@@ -284,16 +282,10 @@ export function Plans() {
   const ref = useReveal<HTMLElement>()
 
   return (
-    <section
-      id="offer"
-      ref={ref}
-      className="reveal bg-ink px-4 py-16 text-white sm:px-6 sm:py-24 lg:px-10"
-    >
+    <section id="offer" ref={ref} className="reveal section-shell">
       <div className="mx-auto max-w-6xl">
-        <p className="text-sm font-bold tracking-[0.18em] text-blaze uppercase">
-          מה אני מציע
-        </p>
-        <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold sm:text-5xl">
+        <Eyebrow>מה אני מציע</Eyebrow>
+        <h2 className="mt-5 max-w-2xl font-display text-3xl font-extrabold sm:text-5xl">
           אימון אישי — מגיע עד אליך
         </h2>
         <p className="mt-4 max-w-xl text-white/85">
@@ -339,7 +331,7 @@ export function Plans() {
             <p className="mt-4 flex-1 leading-relaxed text-white/85">
               מביאים חבר? שניכם נהנים. ספרו לי בשיחה ונדייק יחד את התנאים.
             </p>
-            <p className="mt-6 text-sm text-white/80">
+            <p className="mt-6 text-sm text-white/85">
               האימונים באזור ירושלים והסביבה.
             </p>
             <CtaButton href="#contact" variant="primary" className="mt-8 w-full">
@@ -374,16 +366,10 @@ export function Faq() {
   ]
 
   return (
-    <section
-      id="faq"
-      ref={ref}
-      className="reveal bg-paper px-4 py-16 sm:px-6 sm:py-24 lg:px-10"
-    >
+    <section id="faq" ref={ref} className="reveal section-shell">
       <div className="mx-auto max-w-3xl">
-        <p className="text-sm font-bold tracking-[0.18em] text-blaze uppercase">
-          שאלות נפוצות
-        </p>
-        <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-5xl">
+        <Eyebrow>שאלות נפוצות</Eyebrow>
+        <h2 className="mt-5 font-display text-3xl font-extrabold sm:text-5xl">
           לפני שמתחילים
         </h2>
         <div className="mt-10 divide-y divide-line border-y border-line">
@@ -414,7 +400,7 @@ export function FinalCta() {
     <section
       id="contact"
       ref={ref}
-      className="reveal relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:px-10"
+      className="reveal relative overflow-hidden section-shell"
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -425,12 +411,17 @@ export function FinalCta() {
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-ink/88" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,77,0,0.2),transparent_55%)]"
+        aria-hidden="true"
+      />
 
       <div className="relative z-10 mx-auto max-w-3xl text-center text-white">
         <p className="font-brand text-5xl font-extrabold tracking-[0.12em] sm:text-7xl">
           MOTI
         </p>
-        <h2 className="mt-4 font-display text-3xl font-extrabold text-balance sm:text-5xl">
+        <span className="mx-auto mt-4 block h-1 w-20 bg-blaze" aria-hidden="true" />
+        <h2 className="mt-5 font-display text-3xl font-extrabold text-balance sm:text-5xl">
           לא היית רוצה חיים יותר איכותיים?
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg text-white/90">
@@ -447,7 +438,7 @@ export function FinalCta() {
             className="group inline-flex min-h-11 flex-col items-center justify-center gap-1 text-white/90 transition-colors hover:text-white"
             aria-label={`התקשר אל מרדכי ${PHONE_DISPLAY}`}
           >
-            <span className="text-xs font-medium tracking-[0.18em] uppercase">
+            <span className="text-xs font-medium tracking-[0.18em]">
               או התקשר
             </span>
             <span
