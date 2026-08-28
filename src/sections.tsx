@@ -14,31 +14,43 @@ export function Hero() {
           backgroundImage:
             "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2400&q=80')",
         }}
-        role="img"
-        aria-label="אימון כוח"
+        aria-hidden="true"
       />
       <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(10,10,10,0.88)_8%,rgba(10,10,10,0.55)_48%,rgba(10,10,10,0.35)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,77,0,0.28),transparent_45%)]" />
 
-      <nav className="relative z-10 flex items-center justify-between px-4 py-5 sm:px-6 lg:px-10">
+      <nav
+        className="relative z-10 flex items-center justify-between px-4 py-5 sm:px-6 lg:px-10"
+        aria-label="ניווט ראשי"
+      >
         <a href="#top" className="font-brand text-2xl font-extrabold tracking-[0.14em]">
           MOTI
         </a>
-        <div className="hidden items-center gap-8 text-sm font-semibold text-white/80 md:flex">
-          <a href="#about" className="transition-colors hover:text-white">
+        <div className="hidden items-center gap-8 text-sm font-semibold text-white md:flex">
+          <a
+            href="#about"
+            className="underline decoration-transparent underline-offset-4 transition-colors hover:text-white hover:decoration-white focus-visible:decoration-white"
+          >
             עליי
           </a>
-          <a href="#offer" className="transition-colors hover:text-white">
+          <a
+            href="#offer"
+            className="underline decoration-transparent underline-offset-4 transition-colors hover:text-white hover:decoration-white focus-visible:decoration-white"
+          >
             האימון
           </a>
-          <a href="#faq" className="transition-colors hover:text-white">
+          <a
+            href="#faq"
+            className="underline decoration-transparent underline-offset-4 transition-colors hover:text-white hover:decoration-white focus-visible:decoration-white"
+          >
             שאלות
           </a>
         </div>
         <a
           href={TEL}
-          className="hidden text-sm font-semibold tracking-wide text-white/70 transition-colors hover:text-white sm:inline"
+          className="hidden text-sm font-semibold tracking-wide text-white underline decoration-white/50 underline-offset-4 transition-colors hover:decoration-white sm:inline"
           dir="ltr"
+          aria-label={`התקשר אל מרדכי ${PHONE_DISPLAY}`}
         >
           {PHONE_DISPLAY}
         </a>
@@ -76,7 +88,7 @@ export function Hero() {
         </div>
 
         <p
-          className="animate-rise mt-5 text-sm text-white/65"
+          className="animate-rise mt-5 text-sm text-white/85"
           style={{ animationDelay: '0.55s' }}
         >
           אימון אישי עד אליך · ירושלים והסביבה · אפשרות לקבלות
@@ -130,7 +142,7 @@ export function Method() {
         <h2 className="mt-3 max-w-3xl font-display text-3xl font-extrabold text-balance sm:text-5xl">
           מתנשף במדרגות? קשה להרים קניות?
         </h2>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70">
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
           היית רוצה לשנות את המצב? כל אחד יכול — בכל גיל ובכל מצב. גם 15 דקות
           זה משהו. זה הרבה. נשאר לך רק לרצות.
         </p>
@@ -273,7 +285,7 @@ export function Plans() {
         <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold sm:text-5xl">
           אימון אישי — מגיע עד אליך
         </h2>
-        <p className="mt-4 max-w-xl text-white/70">
+        <p className="mt-4 max-w-xl text-white/85">
           לבית, לפארק או לחדר כושר. אימון מותאם אישית, מקצועי — עם הנאה, אנרגיה
           והתקדמות. כולל אפיון הצורך שלך. אפשרות לקבלות.
         </p>
@@ -313,10 +325,10 @@ export function Plans() {
             <h3 className="mt-2 font-display text-3xl font-extrabold">
               חבר מביא חבר
             </h3>
-            <p className="mt-4 flex-1 leading-relaxed text-white/70">
+            <p className="mt-4 flex-1 leading-relaxed text-white/85">
               מביאים חבר? שניכם נהנים. ספרו לי בשיחה ונדייק יחד את התנאים.
             </p>
-            <p className="mt-6 text-sm text-white/55">
+            <p className="mt-6 text-sm text-white/80">
               האימונים באזור ירושלים והסביבה.
             </p>
             <CtaButton href="#contact" variant="primary" className="mt-8 w-full">
@@ -366,9 +378,12 @@ export function Faq() {
         <div className="mt-10 divide-y divide-line border-y border-line">
           {items.map((item) => (
             <details key={item.q} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-bold sm:text-xl">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-bold outline-none sm:text-xl focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-blaze">
                 {item.q}
-                <span className="text-blaze transition-transform duration-200 group-open:rotate-45">
+                <span
+                  className="text-blaze transition-transform duration-200 group-open:rotate-45"
+                  aria-hidden="true"
+                >
                   +
                 </span>
               </summary>
@@ -396,10 +411,9 @@ export function FinalCta() {
           backgroundImage:
             "url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=2200&q=80')",
         }}
-        role="img"
-        aria-label="ציוד כושר"
+        aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-ink/88" />
+      <div className="absolute inset-0 bg-ink/88" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-3xl text-center text-white">
         <p className="font-brand text-5xl font-extrabold tracking-[0.12em] sm:text-7xl">
@@ -408,7 +422,7 @@ export function FinalCta() {
         <h2 className="mt-4 font-display text-3xl font-extrabold text-balance sm:text-5xl">
           לא היית רוצה חיים יותר איכותיים?
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-lg text-white/75">
+        <p className="mx-auto mt-5 max-w-xl text-lg text-white/90">
           יותר אנרגיה, פחות מתח, פחות עייפות. רק צריך כוח רצון — ואפשר להתחיל
           במחירי היכרות.
         </p>
@@ -419,14 +433,15 @@ export function FinalCta() {
           </WhatsAppButton>
           <a
             href={TEL}
-            className="group inline-flex flex-col items-center gap-1 text-white/55 transition-colors hover:text-white"
+            className="group inline-flex min-h-11 flex-col items-center justify-center gap-1 text-white/90 transition-colors hover:text-white"
+            aria-label={`התקשר אל מרדכי ${PHONE_DISPLAY}`}
           >
             <span className="text-xs font-medium tracking-[0.18em] uppercase">
               או התקשר
             </span>
             <span
               dir="ltr"
-              className="font-brand text-2xl font-bold tracking-[0.08em] text-white underline decoration-blaze/70 decoration-2 underline-offset-8 group-hover:decoration-blaze"
+              className="font-brand text-2xl font-bold tracking-[0.08em] text-white underline decoration-blaze decoration-2 underline-offset-8 group-hover:decoration-blaze"
             >
               {PHONE_DISPLAY}
             </span>
@@ -442,9 +457,20 @@ export function Footer() {
     <footer className="border-t border-line bg-white px-4 py-8 sm:px-6 lg:px-10">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <p className="font-brand text-2xl font-extrabold tracking-[0.12em]">MOTI</p>
-        <a href={TEL} className="text-sm text-muted transition-colors hover:text-ink" dir="ltr">
-          {PHONE_DISPLAY}
-        </a>
+        <nav
+          className="flex flex-wrap items-center gap-4 text-sm"
+          aria-label="קישורים בתחתית העמוד"
+        >
+          <a href={TEL} className="text-muted transition-colors hover:text-ink" dir="ltr">
+            {PHONE_DISPLAY}
+          </a>
+          <a
+            href="#accessibility-statement"
+            className="font-semibold text-ink underline decoration-blaze/50 underline-offset-4 transition-colors hover:decoration-blaze"
+          >
+            הצהרת נגישות
+          </a>
+        </nav>
         <p className="text-sm text-muted">
           © {new Date().getFullYear()} MOTI · מאמן אישי · ירושלים והסביבה
         </p>

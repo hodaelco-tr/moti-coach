@@ -65,10 +65,29 @@ export function AccessibilityMenu() {
 
   useEffect(() => {
     if (!open) return
+
+    const panel = panelRef.current
+    const focusables = panel?.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    )
+    focusables?.[0]?.focus()
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpen(false)
         btnRef.current?.focus()
+        return
+      }
+      if (e.key !== 'Tab' || !focusables?.length) return
+      const list = Array.from(focusables)
+      const first = list[0]
+      const last = list[list.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
       }
     }
     const onClick = (e: MouseEvent) => {
@@ -126,6 +145,9 @@ export function AccessibilityMenu() {
       <a href="#main-content" className="a11y-skip">
         דלג לתוכן
       </a>
+      <a href="#accessibility-statement" className="a11y-skip a11y-skip-secondary">
+        דלג להצהרת נגישות
+      </a>
 
       <button
         ref={btnRef}
@@ -146,6 +168,7 @@ export function AccessibilityMenu() {
           ref={panelRef}
           id={panelId}
           role="dialog"
+          aria-modal="true"
           aria-label="הגדרות נגישות"
           className="a11y-panel"
         >
@@ -164,9 +187,14 @@ export function AccessibilityMenu() {
           </div>
 
           <div className="a11y-speech">
-            <p className="a11y-speech-label">הקראה בקול</p>
+            <p className="a11y-speech-label" id="a11y-speech-label">
+              הקראה בקול
+            </p>
+            <p className="sr-only" aria-live="polite">
+              {speaking ? 'ההקראה פעילה' : ''}
+            </p>
             {speechSupported ? (
-              <div className="a11y-font-btns">
+              <div className="a11y-font-btns" role="group" aria-labelledby="a11y-speech-label">
                 <button
                   type="button"
                   className="a11y-speech-btn"
@@ -260,6 +288,14 @@ export function AccessibilityMenu() {
           >
             איפוס
           </button>
+
+          <a
+            href="#accessibility-statement"
+            className="a11y-statement-link"
+            onClick={() => setOpen(false)}
+          >
+            להצהרת הנגישות
+          </a>
         </div>
       )}
     </div>

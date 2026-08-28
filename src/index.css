@@ -3,7 +3,7 @@
 @theme {
   --color-ink: #121212;
   --color-ink-soft: #2a2a2a;
-  --color-muted: #5c5c5c;
+  --color-muted: #4a4a4a;
   --color-line: #d8d8d4;
   --color-paper: #f3f4f6;
   --color-paper-deep: #e6e8ec;
@@ -117,11 +117,19 @@
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
+  /* Keep content available to assistive tech; animate only for motion-OK users */
+  opacity: 1;
+  transform: translateY(0);
   transition:
     opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js-a11y .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(24px);
+  }
 }
 
 .reveal.is-visible {
@@ -150,6 +158,22 @@ html {
   top: 1rem;
 }
 
+.a11y-skip-secondary {
+  inset-inline-start: auto;
+  inset-inline-end: 1rem;
+}
+
+.a11y-statement-link {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.45rem 0.15rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #121212;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .a11y-fab {
   position: fixed;
   right: 1rem;
@@ -158,6 +182,8 @@ html {
   display: inline-flex;
   height: 3.5rem;
   width: 3.5rem;
+  min-height: 44px;
+  min-width: 44px;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
@@ -196,8 +222,9 @@ html {
 .a11y-font-btns button {
   border: 1px solid #d8d8d4;
   background: #f3f4f6;
-  padding: 0.35rem 0.65rem;
+  padding: 0.45rem 0.7rem;
   font-weight: 700;
+  min-height: 44px;
 }
 
 .a11y-font-btns {
@@ -264,7 +291,19 @@ html {
 .a11y-speech-note {
   margin: 0;
   font-size: 0.85rem;
-  color: #5c5c5c;
+  color: #4a4a4a;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 html.a11y-contrast {
